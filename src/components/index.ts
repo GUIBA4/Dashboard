@@ -1,5 +1,5 @@
-import { HomePage } from '../Pages/HomePage';
+import Header from './Header';
 
 export {
-  HomePage,
+  Header,
 };
