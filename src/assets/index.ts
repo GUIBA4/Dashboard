@@ -1,5 +1,5 @@
-import Logo from './logo.png';
+import { ReactComponent as Chart } from './Chart.svg';
 
 export {
-  Logo,
+  Chart,
 };
