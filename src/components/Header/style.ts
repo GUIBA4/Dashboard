@@ -11,7 +11,6 @@ type HeaderProps = {
 
 export const Container = styled.div<HeaderProps>`
   width: 100%;
-  height: 100%;
   display:flex ;
   font-size: 14px;
   font-weight: 600;
