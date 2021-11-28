@@ -64,19 +64,21 @@ export const TopContent = styled.div`
 export const GraficBar = styled.div`
   width: 738px;
   height: 100%;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
   border: 0.5px solid #E4E4E4;
   border-radius: 5px;
-
+  padding: 13px 16px;
 `;
 
 export const GraficCircular = styled.div`
   width: 347px;
   height: 100%;
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
   border: 0.5px solid #E4E4E4;
   border-radius: 5px;
-
+  padding: 13px 16px;
 `;
 
 export const BottomContent = styled.div`

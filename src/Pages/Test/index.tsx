@@ -1,17 +1,30 @@
 import React from 'react';
-import { Header } from '../../components';
+import { Card, Header } from '../../components';
 
 export const Test: React.FC = () => (
   <>
-    <Header
-      title="Histórico de eventos"
-      selectedText="diário"
-      gear
-      subTitle="status do dia"
-      input
-      column
-      placeHold="Pesquise"
-      downSelected="flex"
-    />
+    <Card
+      width="800px"
+      height="800px"
+    >
+      <Header
+        title="Histórico de eventos"
+        selected="flex"
+        selectedText="diário"
+        gear
+      />
+      <Header
+        title="Histórico de eventos"
+        selected="flex"
+        selectedText="diário"
+        gear
+      />
+      <Header
+        title="Histórico de eventos"
+        selected="flex"
+        selectedText="diário"
+        gear
+      />
+    </Card>
   </>
 );

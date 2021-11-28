@@ -1,5 +1,6 @@
 import React from 'react';
 import { Chart } from '../../assets';
+import { Header } from '../../components';
 import {
   Container,
   ControlPainel,
@@ -31,8 +32,21 @@ export const HomePage: React.FC = () => (
     <Body>
       <h1> Painel de controle </h1>
       <TopContent>
-        <GraficBar />
-        <GraficCircular />
+        <GraficBar>
+          <Header
+            title="Histórico de eventos"
+            selected="flex"
+            selectedText="diário"
+            gear
+          />
+        </GraficBar>
+        <GraficCircular>
+          <Header
+            title="Planos de ação"
+            subTitle="visão geral"
+            gear
+          />
+        </GraficCircular>
       </TopContent>
       <BottomContent>
         <BottomConteiner>
