@@ -6,7 +6,7 @@ import { HomePage, Test } from '../Pages';
 export const PublicRoutes = (): JSX.Element => (
   <Switch>
     <Route path="/" exact>
-      <HomePage />
+      <Test />
     </Route>
   </Switch>
 );
