@@ -4,8 +4,10 @@ import {
   Header,
   Card,
   ProgressBar,
+  ProgressCicle,
 } from '../../components';
 import PercentageBar from '../Mocks/PercentagesBar.json';
+import inspections from '../Mocks/ inspections.json';
 import {
   Container,
   ControlPainel,
@@ -71,6 +73,20 @@ export const HomePage: React.FC = () => (
               subTitle="visão geral"
               gear
             />
+            {inspections.map((
+              percent:{
+                greenPercentage:number,
+                orangePercentage:number,
+                pinkPercentage:number
+              },
+            ) => (
+              <ProgressCicle
+                greenPercent={percent.greenPercentage}
+                orangePercent={percent.orangePercentage}
+                pinkPercent={percent.pinkPercentage}
+              />
+            ))}
+
           </Card>
         </TopContent>
         <BottomContent>
@@ -85,6 +101,19 @@ export const HomePage: React.FC = () => (
                   subTitle="status do dia"
                   gear
                 />
+                {inspections.map((
+                  percent:{
+                greenPercentage:number,
+                orangePercentage:number,
+                pinkPercentage:number
+              },
+                ) => (
+                  <ProgressCicle
+                    greenPercent={percent.greenPercentage}
+                    orangePercent={percent.orangePercentage}
+                    pinkPercent={percent.pinkPercentage}
+                  />
+                ))}
               </Card>
               <Card
                 height="323px"
@@ -95,6 +124,19 @@ export const HomePage: React.FC = () => (
                   subTitle="status do dia"
                   gear
                 />
+                {inspections.map((
+                  percent:{
+                greenPercentage:number,
+                orangePercentage:number,
+                pinkPercentage:number
+              },
+                ) => (
+                  <ProgressCicle
+                    greenPercent={percent.greenPercentage}
+                    orangePercent={percent.orangePercentage}
+                    pinkPercent={percent.pinkPercentage}
+                  />
+                ))}
               </Card>
             </BottomConteinerTop>
             <Card
