@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-type FooterProps ={
-
+type FooterProps = {
+  display?:boolean
 }
 
 export const Container = styled.div`
@@ -26,6 +26,17 @@ export const Text = styled.div`
   gap: 4.9px;
   font-weight: 300;
   font-size: 9px;
+
+`;
+
+export const RedText = styled.div<FooterProps>`
+  display: ${(props) => (props.display ? 'flex' : 'none')};
+  flex-direction: row;
+  align-items: center;
+  gap: 4.9px;
+  font-weight: 300;
+  font-size: 9px;
+
 `;
 
 export const Time = styled.div`
@@ -36,6 +47,7 @@ export const Time = styled.div`
 `;
 
 export const TextTime = styled.div`
+  width: 135px;
   display: flex;
   flex-direction: row;
   align-items: center;

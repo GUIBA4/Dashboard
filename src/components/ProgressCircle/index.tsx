@@ -1,5 +1,6 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
+import { Cicle } from './styled';
 
 interface CircleProps {
   greenPercent:number
@@ -13,7 +14,8 @@ export const ProgressCicle: React.ElementType = ({
   pinkPercent,
 }: CircleProps) => (
   <>
-    <Chart
+    <Cicle
+      height="100%"
       chartType="PieChart"
       data={[
         ['', ''],

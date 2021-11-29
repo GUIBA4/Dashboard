@@ -5,6 +5,7 @@ import {
   Card,
   ProgressBar,
   ProgressCicle,
+  Footer,
 } from '../../components';
 import PercentageBar from '../Mocks/PercentagesBar.json';
 import inspections from '../Mocks/ inspections.json';
@@ -39,6 +40,7 @@ export const HomePage: React.FC = () => (
           <Card
             width="738px"
             height="266px"
+            padding="11px 16px"
           >
             <Header
               title="Histórico de eventos"
@@ -61,9 +63,13 @@ export const HomePage: React.FC = () => (
                   purplePercentage={percentage.purplePercentage}
                 />
               ))}
-
             </div>
-
+            <div style={{ paddingLeft: '71px' }}>
+              <Footer
+                performed="Inspeções realizadas"
+                opened="Planos de ação criados"
+              />
+            </div>
           </Card>
           <Card
             height="266px"
@@ -95,6 +101,7 @@ export const HomePage: React.FC = () => (
               <Card
                 height="328px"
                 width="345px"
+                padding="11px 14px"
               >
                 <Header
                   title="Inpseções"
@@ -114,10 +121,25 @@ export const HomePage: React.FC = () => (
                     pinkPercent={percent.pinkPercentage}
                   />
                 ))}
+                <Footer
+                  performed="Realizadas - "
+                  notPerfomed="Em Aberto - "
+                  opened="Não Realizadas - "
+                  performedNumber={58.6}
+                  notPerfomedNumber={34.9}
+                  openedNumber={6.5}
+                  time="10 min"
+                  long="Últimos 30 dias"
+                  early="Últimos 7 dias "
+                  today="hoje"
+                  timeAverage="Média de tempo"
+                  display="flex"
+                />
               </Card>
               <Card
                 height="323px"
                 width="358px"
+                padding="6px 12px"
               >
                 <Header
                   title="Planos de ação"
@@ -137,6 +159,20 @@ export const HomePage: React.FC = () => (
                     pinkPercent={percent.pinkPercentage}
                   />
                 ))}
+                <Footer
+                  performed="Realizadas - "
+                  notPerfomed="Em Aberto - "
+                  opened="Não Realizadas - "
+                  performedNumber={58.6}
+                  notPerfomedNumber={34.9}
+                  openedNumber={6.5}
+                  time="10 min"
+                  long="Últimos 30 dias"
+                  early="Últimos 7 dias "
+                  today="hoje"
+                  timeAverage="Média de tempo"
+                  display="flex"
+                />
               </Card>
             </BottomConteinerTop>
             <Card
