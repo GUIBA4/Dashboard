@@ -6,9 +6,12 @@ import {
   ProgressBar,
   ProgressCicle,
   Footer,
+  Table,
+  TableHeader,
 } from '../../components';
 import PercentageBar from '../Mocks/PercentagesBar.json';
 import inspections from '../Mocks/ inspections.json';
+import table from '../Mocks/table.json';
 import {
   Container,
   ControlPainel,
@@ -178,16 +181,40 @@ export const HomePage: React.FC = () => (
             <Card
               height="328px"
               width="738px"
+              padding="19px 32px 32px 23px"
             >
               <Header
+                selectedText="diário"
                 title="Inspeções agendadas"
                 selected="flex"
-                selectedText="diário"
-                input
                 widthInput="704px"
+                input
                 placeHold="Pesquise"
                 column
+
               />
+              <TableHeader
+                name="NAME"
+                planned="PLANEJADO"
+                realized="REALIZADO"
+                lastUpdate="ÚLTIMA ATUALIZAÇÃO"
+              />
+              {table.map((
+                informations:{
+                  name:string,
+                  planned:string,
+                  realized:string,
+                  lastUpdate:string
+                },
+              ) => (
+                <Table
+                  name={informations.name}
+                  planned={informations.planned}
+                  realized={informations.realized}
+                  lastUpdate={informations.lastUpdate}
+                />
+              ))}
+
             </Card>
           </BottomConteiner>
           <Card
