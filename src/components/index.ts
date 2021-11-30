@@ -5,6 +5,7 @@ import ProgressCicle from './ProgressCircle';
 import Footer from './Footer';
 import Table from './Table';
 import TableHeader from './Table/TableHeader';
+import TableUpdate from './Table/TableUpdate';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   Footer,
   Table,
   TableHeader,
+  TableUpdate,
 };

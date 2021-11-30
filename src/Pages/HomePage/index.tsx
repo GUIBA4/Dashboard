@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart } from '../../assets';
+import { Chart } from '../../assets/index';
 import {
   Header,
   Card,
@@ -8,10 +8,12 @@ import {
   Footer,
   Table,
   TableHeader,
+  TableUpdate,
 } from '../../components';
 import PercentageBar from '../Mocks/PercentagesBar.json';
 import inspections from '../Mocks/ inspections.json';
 import table from '../Mocks/table.json';
+import tableUpdate from '../Mocks/tableUpdate.json';
 import {
   Container,
   ControlPainel,
@@ -23,12 +25,17 @@ import {
   BottomConteinerTop,
   TextControlPainel,
   Burguer,
+  Bar,
 } from './style';
 
 export const HomePage: React.FC = () => (
   <Container>
     <Menu>
-      <Burguer />
+      <Burguer>
+        <Bar />
+        <Bar />
+        <Bar />
+      </Burguer>
     </Menu>
     <ControlPainel>
       <TextControlPainel>
@@ -219,6 +226,7 @@ export const HomePage: React.FC = () => (
           </BottomConteiner>
           <Card
             height="670px"
+            padding="7px 13px 38px 13px"
           >
             <Header
               title="Planos de ação"
@@ -229,6 +237,27 @@ export const HomePage: React.FC = () => (
               column
               gear
             />
+            {tableUpdate.map((
+              information:{
+                name:string,
+                subTitle:string,
+                lastUpdate:string,
+                svg:boolean
+              },
+            ) => (
+              <TableUpdate
+                name={information.name}
+                subTitle={information.subTitle}
+                lastUpdate={information.lastUpdate}
+                direction
+                position
+                svg={information.svg}
+                column
+                color
+                exist
+              />
+            ))}
+
           </Card>
         </BottomContent>
       </Body>

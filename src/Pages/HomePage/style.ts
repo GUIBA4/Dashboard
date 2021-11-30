@@ -37,13 +37,25 @@ export const Burguer = styled.div`
   border-radius: 100%;
   background-color: #FAFAFA;
   position: absolute;
-  left: -5.5px;
+  left: -5.6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Bar = styled.div`
+  width: 20px;
+  height: 1.53px;
+  background-color: #333333;
+  margin-bottom: 3px;
 `;
 
 export const Body = styled.div`
   width: 100%;
   height: 1088px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
   padding: 33px 22px 22px 56px;

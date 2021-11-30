@@ -6,17 +6,22 @@ import {
   ProgressBar,
   ProgressCicle,
   Table,
+  TableUpdate,
 
 } from '../../components';
 
 export const Test: React.FC = () => (
   <>
-    <Table
-      display
-      name="Larissa Silva Goncalves"
-      planned="10"
-      realized="10"
-      lastUpdate="08:10h 10/10/2010"
+    <TableUpdate
+      name="Nome do plano de ação"
+      subTitle="responsável: Bruno Barros"
+      lastUpdate="10:45 10/10/10"
+      direction
+      position
+      svg
+      column
+      color
+      exist
     />
   </>
 );

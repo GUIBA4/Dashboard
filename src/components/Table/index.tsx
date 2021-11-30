@@ -16,7 +16,6 @@ export const Table: React.ElementType = ({
   lastUpdate,
   realized,
 }: TableProps) => (
-
   <Container>
     <TableContent>
       <div>
