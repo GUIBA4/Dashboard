@@ -14,7 +14,7 @@ export const Test: React.FC = () => (
   <>
     <TableUpdate
       name="Nome do plano de ação"
-      subTitle="responsável: Bruno Barros"
+      subtitle="responsável: Bruno Barros"
       lastUpdate="10:45 10/10/10"
       direction
       position

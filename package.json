@@ -1,5 +1,4 @@
 {
-  "name": "react-js-boilerplate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -45,9 +44,6 @@
     ],
     "overrides": [
       {
-        "files": [
-          "**/*.stories.*"
-        ],
         "rules": {
           "import/no-anonymous-default-export": "off"
         }

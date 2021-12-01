@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart } from '../../assets/index';
+import { ArrowLeft, Chart } from '../../assets/index';
 import {
   Header,
   Card,
@@ -10,120 +10,125 @@ import {
   TableHeader,
   TableUpdate,
 } from '../../components';
-import PercentageBar from '../Mocks/PercentagesBar.json';
-import inspections from '../Mocks/ inspections.json';
-import table from '../Mocks/table.json';
-import tableUpdate from '../Mocks/tableUpdate.json';
+import { useData } from '../../hooks/context';
 import {
   Container,
   ControlPainel,
   Menu,
   Body,
-  TopContent,
-  BottomContent,
-  BottomConteiner,
-  BottomConteinerTop,
+  RightContent,
+  LeftContent,
+  LeftMediumConteiner,
   TextControlPainel,
   Burguer,
   Bar,
+  Content,
+  ArrowPainel,
 } from './style';
 
-export const HomePage: React.FC = () => (
-  <Container>
-    <Menu>
-      <Burguer>
-        <Bar />
-        <Bar />
-        <Bar />
-      </Burguer>
-    </Menu>
-    <ControlPainel>
-      <TextControlPainel>
-        <Chart />
-        <p> Painel de Controle </p>
-      </TextControlPainel>
-    </ControlPainel>
-    <div style={{ width: '1200px' }}>
+type inspectionsProps ={
+  greenPercentage:number
+  orangePercentage:number
+  pinkPercentage:number
+  today:string
+  sevenAgo:string
+  lastThirty:string
+}
+
+type percentagesBarProps ={
+  bluePercentage:string
+  redPercentage:string
+  purplePercentage:string
+}
+
+type tableProps ={
+  name:string
+  realized:string
+  planned:string
+  lastUpdate:string
+}
+
+type tableUpdateProps ={
+  name:string
+  subtitle:string
+  svg:boolean
+  lastUpdate:string
+}
+
+export const HomePage: React.FC = () => {
+  const {
+    tableData,
+    inspectionsData,
+    tableUpdateData,
+    percentagesBarData,
+  } = useData();
+  return (
+    <Container>
+      <Menu>
+        <Burguer>
+          <Bar />
+          <Bar />
+          <Bar />
+        </Burguer>
+      </Menu>
+      <ControlPainel>
+        <ArrowPainel>
+          <ArrowLeft />
+        </ArrowPainel>
+        <TextControlPainel>
+          <Chart />
+          <p> Painel de Controle </p>
+        </TextControlPainel>
+      </ControlPainel>
+
       <Body>
         <h1> Painel de controle </h1>
-        <TopContent>
-          <Card
-            width="738px"
-            height="266px"
-            padding="11px 16px"
-          >
-            <Header
-              title="Histórico de eventos"
-              selected="flex"
-              selectedText="diário"
-              gear
-            />
-            <div style={{ paddingLeft: '71px', display: 'flex', flexDirection: 'row' }}>
-              {PercentageBar.map((
-                percentage:
-                {
-                bluePercentage:string,
-                redPercentage:string,
-                purplePercentage:string
-              },
-              ) => (
-                <ProgressBar
-                  bluePercentage={percentage.bluePercentage}
-                  redPercentage={percentage.redPercentage}
-                  purplePercentage={percentage.purplePercentage}
-                />
-              ))}
-            </div>
-            <div style={{ paddingLeft: '71px' }}>
-              <Footer
-                performed="Inspeções realizadas"
-                opened="Planos de ação criados"
-              />
-            </div>
-          </Card>
-          <Card
-            height="266px"
-          >
-            <Header
-              title="Planos de ação"
-              subTitle="visão geral"
-              gear
-            />
-            {inspections.map((
-              percent:{
-                greenPercentage:number,
-                orangePercentage:number,
-                pinkPercentage:number
-              },
-            ) => (
-              <ProgressCicle
-                greenPercent={percent.greenPercentage}
-                orangePercent={percent.orangePercentage}
-                pinkPercent={percent.pinkPercentage}
-              />
-            ))}
+        <Content>
 
-          </Card>
-        </TopContent>
-        <BottomContent>
-          <BottomConteiner>
-            <BottomConteinerTop>
+          <LeftContent>
+
+            <Card
+              maxWidth="738px"
+              height="266px"
+              padding="11px 16px"
+            >
+              <Header
+                title="Histórico de eventos"
+                selected="flex"
+                selectedText="diário"
+                gear
+              />
+              <div style={{ paddingLeft: '71px', display: 'flex', flexDirection: 'row' }}>
+                {percentagesBarData.map((
+                  percentage:percentagesBarProps,
+                ) => (
+                  <ProgressBar
+                    bluePercentage={percentage.bluePercentage}
+                    redPercentage={percentage.redPercentage}
+                    purplePercentage={percentage.purplePercentage}
+                  />
+                ))}
+              </div>
+              <div style={{ paddingLeft: '71px' }}>
+                <Footer
+                  text="Inspeções realizadas"
+                  description="Planos de ação criados"
+                />
+              </div>
+            </Card>
+            <LeftMediumConteiner>
               <Card
-                height="328px"
-                width="345px"
+                height="323px"
+                maxWidth="347px"
                 padding="11px 14px"
               >
                 <Header
                   title="Inpseções"
-                  subTitle="status do dia"
+                  subtitle="status do dia"
                   gear
                 />
-                {inspections.map((
-                  percent:{
-                greenPercentage:number,
-                orangePercentage:number,
-                pinkPercentage:number
-              },
+                {inspectionsData.map((
+                  percent:inspectionsProps,
                 ) => (
                   <ProgressCicle
                     greenPercent={percent.greenPercentage}
@@ -131,37 +136,35 @@ export const HomePage: React.FC = () => (
                     pinkPercent={percent.pinkPercentage}
                   />
                 ))}
-                <Footer
-                  performed="Realizadas - "
-                  notPerfomed="Em Aberto - "
-                  opened="Não Realizadas - "
-                  performedNumber={58.6}
-                  notPerfomedNumber={34.9}
-                  openedNumber={6.5}
-                  time="10 min"
-                  long="Últimos 30 dias"
-                  early="Últimos 7 dias "
-                  today="hoje"
-                  timeAverage="Média de tempo"
-                  display="flex"
-                />
+                {inspectionsData.map((
+                  percent:inspectionsProps,
+                ) => (
+                  <Footer
+                    performedNumber={percent.greenPercentage}
+                    notPerfomedNumber={percent.pinkPercentage}
+                    openedNumber={percent.orangePercentage}
+                    timeToday={percent.today}
+                    timeSevenAgo={percent.sevenAgo}
+                    timeLastThirty={percent.lastThirty}
+                    display
+                    exist
+                    text="Realizadas - "
+                    description="Em Aberto - "
+                  />
+                ))}
               </Card>
               <Card
                 height="323px"
-                width="358px"
-                padding="6px 12px"
+                maxWidth="347px"
+                padding="11px 14px"
               >
                 <Header
                   title="Planos de ação"
-                  subTitle="status do dia"
+                  subtitle="status do dia"
                   gear
                 />
-                {inspections.map((
-                  percent:{
-                greenPercentage:number,
-                orangePercentage:number,
-                pinkPercentage:number
-              },
+                {inspectionsData.map((
+                  percent:inspectionsProps,
                 ) => (
                   <ProgressCicle
                     greenPercent={percent.greenPercentage}
@@ -169,26 +172,31 @@ export const HomePage: React.FC = () => (
                     pinkPercent={percent.pinkPercentage}
                   />
                 ))}
-                <Footer
-                  performed="Realizadas - "
-                  notPerfomed="Em Aberto - "
-                  opened="Não Realizadas - "
-                  performedNumber={58.6}
-                  notPerfomedNumber={34.9}
-                  openedNumber={6.5}
-                  time="10 min"
-                  long="Últimos 30 dias"
-                  early="Últimos 7 dias "
-                  today="hoje"
-                  timeAverage="Média de tempo"
-                  display="flex"
-                />
+                {inspectionsData.map((
+                  percent:inspectionsProps,
+                ) => (
+                  <Footer
+                    performedNumber={percent.greenPercentage}
+                    notPerfomedNumber={percent.pinkPercentage}
+                    openedNumber={percent.orangePercentage}
+                    timeToday={percent.today}
+                    timeSevenAgo={percent.sevenAgo}
+                    timeLastThirty={percent.lastThirty}
+                    display
+                    exist
+                    text="Realizadas - "
+                    description="Em Aberto - "
+                    visualize="visualizar detalhes"
+                  />
+                ))}
+
               </Card>
-            </BottomConteinerTop>
+            </LeftMediumConteiner>
             <Card
               height="328px"
-              width="738px"
+              maxWidth="738px"
               padding="19px 32px 32px 23px"
+
             >
               <Header
                 selectedText="diário"
@@ -198,21 +206,10 @@ export const HomePage: React.FC = () => (
                 input
                 placeHold="Pesquise"
                 column
-
               />
-              <TableHeader
-                name="NAME"
-                planned="PLANEJADO"
-                realized="REALIZADO"
-                lastUpdate="ÚLTIMA ATUALIZAÇÃO"
-              />
-              {table.map((
-                informations:{
-                  name:string,
-                  planned:string,
-                  realized:string,
-                  lastUpdate:string
-                },
+              <TableHeader />
+              {tableData.map((
+                informations:tableProps,
               ) => (
                 <Table
                   name={informations.name}
@@ -223,44 +220,66 @@ export const HomePage: React.FC = () => (
               ))}
 
             </Card>
-          </BottomConteiner>
-          <Card
-            height="670px"
-            padding="7px 13px 38px 13px"
-          >
-            <Header
-              title="Planos de ação"
-              subTitle="atualizações"
-              downSelected="flex"
-              selectedText="pendente"
-              input
-              column
-              gear
-            />
-            {tableUpdate.map((
-              information:{
-                name:string,
-                subTitle:string,
-                lastUpdate:string,
-                svg:boolean
-              },
-            ) => (
-              <TableUpdate
-                name={information.name}
-                subTitle={information.subTitle}
-                lastUpdate={information.lastUpdate}
-                direction
-                position
-                svg={information.svg}
-                column
-                color
-                exist
-              />
-            ))}
 
-          </Card>
-        </BottomContent>
+          </LeftContent>
+          <RightContent>
+
+            <Card
+              maxWidth="347px"
+              height="256px"
+              padding="11px 14px"
+            >
+              <Header
+                title="Planos de ação"
+                subtitle="visão geral"
+                gear
+              />
+              {inspectionsData.map((
+                percent:inspectionsProps,
+              ) => (
+                <ProgressCicle
+                  greenPercent={percent.greenPercentage}
+                  orangePercent={percent.orangePercentage}
+                  pinkPercent={percent.pinkPercentage}
+                />
+              ))}
+              <div />
+            </Card>
+            <Card
+              maxWidth="347px"
+              height="670px"
+              padding="7px 13px 38px 13px"
+            >
+              <Header
+                title="Planos de ação"
+                subtitle="atualizações"
+                downSelected="flex"
+                selectedText="pendente"
+                input
+                column
+                gear
+              />
+              {tableUpdateData.map((
+                information:tableUpdateProps,
+              ) => (
+                <TableUpdate
+                  name={information.name}
+                  subtitle={information.subtitle}
+                  lastUpdate={information.lastUpdate}
+                  direction
+                  position
+                  svg={information.svg}
+                  column
+                  color
+                  exist
+                />
+              ))}
+
+            </Card>
+          </RightContent>
+        </Content>
       </Body>
-    </div>
-  </Container>
-);
+
+    </Container>
+  );
+};

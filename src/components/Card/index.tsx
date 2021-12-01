@@ -8,22 +8,25 @@ type WithChildren<T = unknown> = T & {
 };
 
 interface CardProps {
-  width:string;
+  maxWidth:string;
   height:string;
   padding:string;
   children: WithChildren;
+  margin:string;
 }
 
 export const Card: React.ElementType = ({
-  width,
+  maxWidth,
   height,
   padding,
   children,
+  margin,
 }: CardProps) => (
   <Container
-    width={width}
+    maxWidth={maxWidth}
     height={height}
     paddign={padding}
+    margin={margin}
   >
     {children}
   </Container>

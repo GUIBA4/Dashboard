@@ -5,76 +5,77 @@ import {
 import { GreenCicle, OrangeCicle, PinkCicle } from '../../assets/index';
 
 interface FooterProps {
-  performed:string
-  notPerfomed:string
-  opened:string
   performedNumber:number
   notPerfomedNumber:number
   openedNumber:number
-  time:string
-  today:string
-  early:string
-  long:string
-  timeAverage:string
+  timeToday:string
+  timeSevenAgo:string
+  timeLastThirty:string
   display:boolean
+  exist:boolean
+  text:string
+  description:string
+  visualize:string
 }
 
 export const Footer: React.ElementType = ({
-  performed,
-  notPerfomed,
-  opened,
   performedNumber,
+  exist,
   notPerfomedNumber,
   openedNumber,
-  time,
-  long,
-  early,
-  today,
-  timeAverage,
+  timeToday,
+  timeLastThirty,
+  timeSevenAgo,
   display,
+  text,
+  description,
+  visualize,
 }: FooterProps) => (
   <Container>
     <Task>
       <Text>
         <GreenCicle />
-        {performed}
+        {text}
         {performedNumber}
         %
       </Text>
       <Text>
         <OrangeCicle />
-        {opened}
+        {description}
         {openedNumber}
         %
       </Text>
       <RedText display={display}>
         <PinkCicle />
-        {notPerfomed}
+        Não Realizadas -
         {notPerfomedNumber}
         %
       </RedText>
+      <p style={{ fontSize: '14px', fontWeight: 600 }}>
+        {visualize}
+      </p>
     </Task>
-    <Time>
+    <Time exist={exist}>
       <div style={{ fontSize: '10px', fontWeight: 400, color: '#B0B0B0' }}>
-        {timeAverage}
+        Média de tempo
       </div>
       <TextTime>
         <div>
-          {today}
+          hoje
         </div>
-        {time}
+        {timeToday}
       </TextTime>
       <TextTime>
         <div>
-          {early}
+          Últimos 7 dias
         </div>
-        {time}
+        {timeSevenAgo}
       </TextTime>
       <TextTime>
         <div>
-          {long}
+          Últimos 30 dias
         </div>
-        {time}
+        {timeLastThirty}
       </TextTime>
     </Time>
   </Container>

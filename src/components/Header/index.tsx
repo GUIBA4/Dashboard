@@ -18,7 +18,7 @@ interface HeaderProps {
   input:boolean
   selectedText:string
   gear:boolean
-  subTitle:string
+  subtitle:string
   placeHold:string
 }
 
@@ -29,7 +29,7 @@ export const Header: React.ElementType = ({
   selected,
   selectedText,
   gear,
-  subTitle,
+  subtitle,
   placeHold,
   widthInput,
   input,
@@ -40,7 +40,7 @@ export const Header: React.ElementType = ({
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {title}
         <div style={{ fontWeight: 400, fontSize: '12px' }}>
-          {subTitle}
+          {subtitle}
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>

@@ -3,33 +3,21 @@ import {
   Content, TableColumns,
 } from './style';
 
-interface TableProps {
-  name:string
-  planned:string
-  lastUpdate:string
-  realized:string
-}
-
-export const TableHeader: React.ElementType = ({
-  name,
-  planned,
-  lastUpdate,
-  realized,
-}: TableProps) => (
+export const TableHeader: React.ElementType = () => (
 
   <TableColumns>
     <div>
-      {name}
+      NOME
     </div>
     <div style={{ display: 'flex', gap: '30px' }}>
       <Content>
-        {planned}
+        PLANEJADO
       </Content>
       <Content>
-        {realized}
+        REALIZADO
       </Content>
       <div style={{ width: 104, textAlign: 'center' }}>
-        {lastUpdate}
+        ÚLTIMA ATUALIZAÇÃO
       </div>
     </div>
   </TableColumns>

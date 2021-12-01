@@ -7,6 +7,7 @@ import { ReactComponent as PinkCicle } from './PinkCicle.svg';
 import { ReactComponent as Realized } from './Realized.svg';
 import { ReactComponent as NotRealized } from './NotRealized.svg';
 import { ReactComponent as ArrowRight } from './ArrowRight.svg';
+import { ReactComponent as ArrowLeft } from './ArrowLeft.svg';
 
 export {
   Chart,
@@ -18,5 +19,5 @@ export {
   Realized,
   NotRealized,
   ArrowRight,
-
+  ArrowLeft,
 };

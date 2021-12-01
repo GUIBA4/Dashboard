@@ -1,6 +1,5 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
-import { Cicle } from './styled';
 
 interface CircleProps {
   greenPercent:number
@@ -13,9 +12,8 @@ export const ProgressCicle: React.ElementType = ({
   orangePercent,
   pinkPercent,
 }: CircleProps) => (
-  <>
-    <Cicle
-      height="100%"
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Chart
       chartType="PieChart"
       data={[
         ['', ''],
@@ -27,12 +25,18 @@ export const ProgressCicle: React.ElementType = ({
         pieHole: 0.8,
         colors: ['#7FC008', '#DB8C28', '#EB5757'],
         legend: { position: 'none', display: 'none' },
+        chartArea: {
+          width: '100%',
+          height: '100%',
+        },
+        height: 144,
+        width: 144,
         animation: {
           animation: false,
         },
       }}
     />
-  </>
+  </div>
 
 );
 

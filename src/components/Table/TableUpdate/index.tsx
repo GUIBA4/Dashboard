@@ -9,7 +9,7 @@ interface TableProps {
   planned:string;
   lastUpdate:string;
   realized:string;
-  subTitle:string;
+  subtitle:string;
   gap:boolean;
   direction:boolean;
   position:boolean;
@@ -24,7 +24,7 @@ export const TableUpdate: React.ElementType = ({
   planned,
   lastUpdate,
   realized,
-  subTitle,
+  subtitle,
   gap,
   direction,
   position,
@@ -47,7 +47,7 @@ export const TableUpdate: React.ElementType = ({
             color: '#B0B0B0',
           }}
         >
-          {subTitle}
+          {subtitle}
         </div>
       </div>
 

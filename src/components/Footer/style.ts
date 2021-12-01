@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type FooterProps = {
   display?:boolean
+  exist?:boolean
 }
 
 export const Container = styled.div`
@@ -39,9 +40,9 @@ export const RedText = styled.div<FooterProps>`
 
 `;
 
-export const Time = styled.div`
+export const Time = styled.div<FooterProps>`
   width: 100%;
-  display: flex;
+  display:  ${(props) => (props.exist ? 'flex' : 'none')};
   flex-direction: column;
   gap:9px;
 `;
